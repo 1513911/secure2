@@ -28,8 +28,9 @@ $sqliconn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 				echo "prepared statement failed";
 
 				//bind parameter
-				$stm->bind_param('ss', $username, $password);
+
 			}
+			$stm->bind_param('ss', $username, $password);
 				if($stm->execute()) {
 					$result = $stm->get_result();
 					$row = $result->fetch_assoc();
