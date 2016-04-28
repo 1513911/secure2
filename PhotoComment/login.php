@@ -1,5 +1,8 @@
 <?php
 	session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 	include("connection.php"); //Establishing connection with our database
 //define sql connection
 $sqliconn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
