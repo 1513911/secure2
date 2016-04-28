@@ -52,8 +52,7 @@ if(isset($_POST["submit"]))
 		//clean input user name
 		$username = stripslashes( $username );
 		$username=mysqli_real_escape_string($db,$username);
-		$username = htmlspecialchars( $username );
-		//$username=xssafe($username);
+		$username = htmlspecialchars( $username );;
 
 		//enrypt password
 		$password=md5($password);
