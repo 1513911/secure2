@@ -24,7 +24,9 @@ $sqliconn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 			$photosql = 'SELECT userID FROM users WHERE username=? and password= ?';
 
 			//inititalilised the statement
-			$stm = $sqliconn->init();
+			if(!($stm = $sqliconn->init())){
+				echo "init failed";
+			}
 
 			//prepare statement
 			if (!($stm->prepare($photosql))) {
