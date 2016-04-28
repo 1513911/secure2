@@ -1,7 +1,8 @@
 <?php
 	session_start();
 	include("connection.php"); //Establishing connection with our database
-	
+//define sql connection
+$sqliconn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 	$error = ""; //Variable for storing our errors.
 	if(isset($_POST["submit"])) {
 		if (empty($_POST["username"]) || empty($_POST["password"])) {
@@ -12,8 +13,7 @@
 			$password = $_POST['password'];
 
 
-			//define sql connection
-			$sqliconn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
+
 			if($sqliconn->connect_errno){
 				echo "connection failed";
 			}
