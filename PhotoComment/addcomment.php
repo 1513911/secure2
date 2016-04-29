@@ -27,24 +27,30 @@ if(isset($_POST["submit"]))
     if( ($row=$result->fetch_row())) {
         //echo $name." ".$email." ".$password;
         $id = $row[0];
-
-        //prepare statement
-
-        //$stmt=$sqlcon->prepare("SELECT userID FROM users WHERE username=?");
-        $stmt=$sqlcon->prepare("INSERT INTO comments (description,photoID,userID) VALUES (?,?,?)");
-        //bind parameter
-
-        $stmt->bind_param('sii',$desc,$photoID, $id);
-
-        //get result
-        //$query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-        if ($stmt->execute());
-        {
-            $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
-        }
+        $stmt->close();
+        
     }
-    else{
+    else
+    {
         $msg = "You need to login first";
+    }
+
+
+
+    //prepare statement
+
+    //$stmt=$sqlcon->prepare("SELECT userID FROM users WHERE username=?");
+    $stmt=$sqlcon->prepare("INSERT INTO comments (description,photoID,userID) VALUES (?,?,?)");
+    //bind parameter
+
+    $stmt->bind_param('sii',$desc,$photoID, $id);
+
+    //get result
+    //$query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+    if ($stmt->execute());
+    {
+        $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
+        $stmt->close();
     }
 }
 ?>
