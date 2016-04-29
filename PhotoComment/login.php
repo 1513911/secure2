@@ -29,7 +29,7 @@ function get_client_ip() {
 }
 
 //Function to cleanup user input for xss
-function xss_cleaner($input_str) {
+ function xss_cleaner($input_str) {
 	$return_str = str_replace( array('<','>',"'",'"',')','('), array('&lt;','&gt;','&apos;','&#x22;','&#x29;','&#x28;'), $input_str );
 	$return_str = str_ireplace( '%3Cscript', '', $return_str );
 	return $return_str;
@@ -54,8 +54,8 @@ if(isset($_POST["submit"]))
 		$username=mysqli_real_escape_string($db,$username);
 		$username = htmlspecialchars( $username );;
 
-		//enrypt password
-		$password=md5($password);
+		/*/enrypt password
+		$password=md5($password);*/
 
 		//instance of connection to dbase
 		$mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
