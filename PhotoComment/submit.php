@@ -5,6 +5,22 @@ if(isset($_POST["submit"]))
     $name = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["password"];
+    
+    //clean input photo user name
+		$name = stripslashes( $name );
+		$name=mysqli_real_escape_string($db,$name);
+		$name = htmlspecialchars($name);
+		//encrypt password with md5
+		$password=md5($password);
+		
+		//clean input photo email
+		$email = stripslashes( $email );
+		$email=mysqli_real_escape_string($db,$email);
+		$email = htmlspecialchars($email);
+		
+		
+		
+
 
 
 
