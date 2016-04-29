@@ -36,11 +36,10 @@ if(isset($_POST["submit"]))
         //prepare statement
         
         //$stmt=$sqlcon->prepare("SELECT userID FROM users WHERE username=?");
-           $stmt=$sqlcon->prepare("INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')");
+           $stmt=$sqlcon->prepare("INSERT INTO comments (description,photoID,userID) VALUES (?,?,?)");
            //bind parameter
            
-           $dt = '2009-04-30 10:09:00';
-			$stmt->bind_param('ssii',$desc,$dt,$photoID, $id);
+			$stmt->bind_param('sii',$desc,$photoID, $id);
 			
 			//get result
         //$query = mysqli_query($db, $addsql) or die(mysqli_error($db));
