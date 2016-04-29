@@ -32,9 +32,20 @@ if(isset($_POST["submit"]))
     if( ($row=$result->fetch_row())) {
         //echo $name." ".$email." ".$password;
         $id = $row[0];
-        $addsql = "INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')";
-        $query = mysqli_query($db, $addsql) or die(mysqli_error($db));
-        if ($query) {
+        
+        //prepare statement
+        
+        //$stmt=$sqlcon->prepare("SELECT userID FROM users WHERE username=?");
+           $stmt=$sqlcon->prepare("INSERT INTO comments (description, postDate,photoID,userID) VALUES ('$desc',now(),'$photoID','$id')");
+           //bind parameter
+           
+           $dt = '2009-04-30 10:09:00';
+			$stmt->bind_param('ssii',$desc,$dt,$photoID, $id);
+			
+			//get result
+        //$query = mysqli_query($db, $addsql) or die(mysqli_error($db));
+        if $stmt->execute();
+        {
             $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
         }
     }
