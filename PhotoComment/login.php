@@ -17,6 +17,13 @@ if(isset($_POST["submit"]))
 		$username=$_POST['username'];
 		$password=$_POST['password'];
 
+		//clean input photo user name
+		$username = stripslashes( $username );
+		$username=mysqli_real_escape_string($db,$username);
+		$username = htmlspecialchars($username);
+		$password=md5($password);
+
+
 
 		//implement prepared statement to take of sql injection and other vulnerabilities
 
