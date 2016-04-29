@@ -36,7 +36,7 @@ if(isset($_POST["submit"]))
 		//prepare statement
 		if($stmt=$sqlcon->prepare("SELECT userID FROM users WHERE username=? and password=?")){
 			//bind parameter
-			$stmt->bind_param('ss',$_POST["username"],$_POST["password"]);
+			$stmt->bind_param('ss',$username,$password);
 			$stmt->execute();
 			//get result
 			$result = $stmt->get_result();
