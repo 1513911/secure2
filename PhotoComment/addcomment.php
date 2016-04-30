@@ -27,8 +27,8 @@ if(isset($_POST["submit"]))
     if( ($row=$result->fetch_row())) {
         //echo $name." ".$email." ".$password;
         $id = $row[0];
-        $stmt->close();
         
+
     }
     else
     {
@@ -50,7 +50,7 @@ if(isset($_POST["submit"]))
     if ($stmt->execute());
     {
         $msg = "Thank You! comment added. click <a href='photo.php?id=".$photoID."'>here</a> to go back";
-        $stmt->close();
+        
     }
 }
 ?>
