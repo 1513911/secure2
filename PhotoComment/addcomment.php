@@ -43,7 +43,7 @@ if(isset($_POST["submit"]))
     $photoID = stripslashes( $photoID );
     $photoID=mysqli_real_escape_string($db,$photoID);
     $photoID = htmlspecialchars($photoID);
-    $photoID=xssafe($photoID);
+    //$photoID=xssafe($photoID);
 
     if($userID >0) {
         //test connection
